@@ -1,5 +1,7 @@
 # Q1Fold
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24330474.svg)](https://doi.org/10.5281/zenodo.24330474)
+
 Q1Fold is a hybrid quantum–classical model for RNA secondary structure
 prediction. Three small variational quantum circuits (3, 5 and 7 qubits) read
 local sequence windows and produce 351 features per nucleotide from 69 trainable
