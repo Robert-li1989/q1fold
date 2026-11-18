@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.egg-info/
+*.bak
+*.backup
+
+# model weights and outputs (published on Zenodo instead)
+*.pmt
+*.pt
+*.pk
+*.npz
+results/
+runs/
+logs/
+*.log
+
+# full datasets (see data/README.md)
+data/*
+!data/README.md
+!data/sample/

@@ -1,0 +1,45 @@
+{
+  "_comment": "v20: identical to v17 (pair_channels=128) EXCEPT stronger regularization -- weight_decay 0.01 -> 0.03 and attn1d_dropout 0.15 -> 0.25. Purpose: disambiguate WHY the pair-rank sweep declined past 96. The sweep (32->64->96->128->160) showed long-range AP@100+ rising to a peak at 64-96 (dAP ~+0.030) then falling back (128: +0.013, 160: ~0.000), while train F1 climbed to ~0.90-0.93 and validation f1_post peaked early (v17 ep18, v18 ep20) then overfit for 25+ epochs. That pattern is capacity-outrunning-regularization, not necessarily a true frontier ceiling. This run tests it: if regularized-128 RECOVERS to >= v16/v19's long-range frontier, the frontier was still rising and 128+ was just overfitting (=> consider re-regularized wider models); if it STILL cannot beat rank-64 (v19), rank has genuinely saturated and the 64-96 sweet spot is real and clean for the paper. ONLY weight_decay and attn1d_dropout change from v17, so the result is attributable to regularization. Give it enough epochs to reach and pass its LR-drop plateau (stronger reg -> possibly later peak than v17's ep18). Evaluate with eval_buckets.py --pr-curve --tune-threshold; compare AP@100+ to v19 (rank-64) and v16 (rank-96), not just to v13.",
+
+  "extractor_type": "multiscale_quantum",
+  "multiscale_scales": [3, 5, 7],
+  "multiscale_layers": 1,
+  "multiscale_use_position_encoding": false,
+
+  "use_1d_attention": true,
+  "attn1d_d_model": 128,
+  "attn1d_n_blocks": 4,
+  "attn1d_n_heads": 8,
+  "attn1d_dropout": 0.25,
+  "attn1d_use_position_encoding": true,
+
+  "use_relpos_2d": true,
+  "relpos_channels": 16,
+  "relpos_num_buckets": 64,
+  "relpos_max_distance": 512,
+  "relpos_symmetric": true,
+
+  "pair_construction": "outer_product_mean",
+  "pair_channels": 128,
+
+  "refiner_type": "dilated_resnet2d",
+  "dilated_filters": 96,
+  "dilated_bottleneck": 48,
+  "dilated_dilations": [1, 2, 4, 8, 16],
+  "dilated_kernel": 5,
+
+  "lr": 1e-4,
+  "extractor_lr": 1e-4,
+  "weight_decay": 0.03,
+  "grad_clip": 1.0,
+  "loss_l1": 0.0005,
+  "loss_beta": 0.15,
+  "negative_weight": 0.1,
+  "scheduler": "plateau",
+  "scheduler_patience": 5,
+
+  "interaction_prior": "probmat",
+  "use_canonical_mask": true,
+  "output_th": 0.5,
+  "patience": 30
+}

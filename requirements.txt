@@ -1,0 +1,14 @@
+# Versions used for all experiments in the paper (Python 3.10.17).
+# Install PyTorch first, from the official CUDA 12.1 wheel index (see README):
+#   pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu121
+PennyLane==0.41.1
+autoray==0.7.1          # newer autoray releases break PennyLane 0.41
+autograd==1.8.0
+rustworkx==0.16.0
+numpy==1.24.2
+pandas==2.0.2
+scikit-learn==1.2.1
+GraKeL==0.1.10
+tqdm==4.64.1
+# Optional: only for the RNAfold reference in the base-pair separation analysis
+# viennarna==2.7.2
