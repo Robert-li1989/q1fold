@@ -48,7 +48,7 @@ python -m q1fold -c configs/q1fold.json -d cuda pred  data/sample/test.csv -w ru
 
 Benchmark data: see [`data/README.md`](data/README.md).
 Trained weights for all reported models (five seeds on bpRNA-1m and on
-RNAStrAlign): **[Zenodo DOI to be added]**
+RNAStrAlign): (https://doi.org/10.5281/zenodo.24330964)
 
 ## Reproducing the paper
 

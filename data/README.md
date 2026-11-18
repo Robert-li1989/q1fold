@@ -10,7 +10,7 @@ The full benchmark datasets are not stored in this repository.
 
 The exact CSV files used in the paper (`TR0.csv`, `VL0.csv`, `TS0.csv`,
 `train_512.csv`, `valid_512.csv`, `test_512.csv`, `ArchiveII_512.csv`) are
-archived at: **[Zenodo DOI to be added]**
+archived at: (https://doi.org/10.5281/zenodo.24330964)
 
 Place them as:
 
